@@ -15,6 +15,10 @@ function App() {
     setLoading(false);
   }
 
+  function handdleBackToCard() {
+    setTheme("");
+  }
+
   return (
     <section className="grid place-content-center w-full h-full">
 
