@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Card } from "./components/Card";
 import themes, { language } from "./data";
 import { aiRequest } from "./services/openai.config";
+import { Documentation } from "./components/Documentation";
+import { Loading } from "./components/Loading";
 
 function App() {
 
@@ -19,6 +21,8 @@ function App() {
     setTheme("");
   }
 
+  if (loading) return <Loading />;
+
   return (
     <section className="grid place-content-center w-full h-full">
 
@@ -26,11 +30,15 @@ function App() {
         {language}
       </h1>
 
-      {theme ? ( <Documentation handdleBackToCard={handdleBackToCard} responseAI={theme}/>) 
-      : ( <div className="grid grid-cols-4 gap-10">
-            {themes.map((theme, idx) => (<Card key={idx} title={theme.name} onClick={() => handleClickTheme(theme.message)}/>))}
+      {theme ? 
+        ( <Documentation handdleBackToCard={handdleBackToCard} responseAI={theme}/>) 
+        : 
+        ( <div className="grid grid-cols-4 gap-10">
+              {themes.map((theme, idx) => (<Card key={idx} title={theme.name} onClick={() => handleClickTheme(theme.message)}/>))}
           </div>
-      )}
+        )
+      }
+
     </section>
   );
 }
