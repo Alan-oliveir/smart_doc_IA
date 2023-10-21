@@ -1,11 +1,15 @@
-import themes from "./data"
+import themes, {language} from "./data";
 
 function App() {
-
   console.log(themes)
   return (
-    <h1>Olá Mundo! </h1>
-  )
+    <>
+    <h1>{language}</h1>
+    {themes.map((theme, idx) => (
+      <p key={idx}> {theme.name}</p>
+    ))}
+    </>
+  );
 }
 
-export default App
+export default App;
