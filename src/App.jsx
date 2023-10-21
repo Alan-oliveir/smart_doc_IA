@@ -10,7 +10,7 @@ function App() {
       </h1>
       <div className="grid grid-cols-4 gap-10"> 
         {themes.map((theme, idx) => (
-          <Card key={idx}/>
+          <Card key={idx} title={theme.name}/>
         ))}
       </div>   
     </section>
